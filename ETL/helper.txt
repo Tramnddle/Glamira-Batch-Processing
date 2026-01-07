@@ -1,0 +1,33 @@
+gcloud compute scp "export_to_gcs.py" tramn@instance-frankfurt-171225:/home/tramn/ --zone europe-west3-a
+
+mongosh "mongodb://tram_nguyen:admin1234@92.208.190.136:27017/?authSource=admin"
+
+python .\normalize_parquet_run.py `
+  --bucket unigap_l3_batch `
+  --src_prefix "exports/mongo_parquet_normalized/run_id=20251230T165024Z/db=countly/collection=summary/" `
+  --dst_prefix "exports/mongo_parquet_stringfix/run_id=20251230T165024Z/db=countly/collection=summary/" `
+  --sample_size 300 `
+  --include_all_suspicious `
+  --force_string_cols "cat_id,is_paypal,key_search" `
+  --log_every 200
+
+
+
+python load_to_bigquery.py `
+  --project solid-transport-479213-h5 `
+  --dataset raw `
+  --table countly_summary_20251230T165024Z `
+  --bucket unigap_l3_batch `
+  --base_prefix "exports/mongo_parquet_stringfix/" `
+  --run_id 20251230T165024Z `
+  --prefix "db=countly/collection=summary" `
+  --write WRITE_TRUNCATE
+
+
+
+gcloud beta billing projects link solid-transport-479213-h5 --billing-account=014918-FDBB4C-40DC92
+
+
+
+
+
