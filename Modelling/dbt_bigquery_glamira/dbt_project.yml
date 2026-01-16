@@ -31,6 +31,13 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   dbt_bigquery_glamira:
-    # Config indicated by + and applies to all files under models/example/
-    example:
+
+    # STAGING LAYER
+    staging:
+      +schema: staging
       +materialized: view
+
+    # MART / STAR SCHEMA LAYER
+    marts:
+      +schema: marts
+      +materialized: table

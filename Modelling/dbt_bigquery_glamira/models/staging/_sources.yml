@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: raw
+    database: solid-transport-479213-h5
+    schema: raw
+    tables:
+      - name: countly_summary
+      - name: product
+      - name: ip_location_raw
