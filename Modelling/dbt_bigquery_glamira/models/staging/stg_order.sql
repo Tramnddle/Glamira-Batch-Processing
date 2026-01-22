@@ -13,7 +13,7 @@ WITH
       CAST(resolution AS string) AS resolution,
 
       -- rename user_id_db -> user_db_id
-      CAST(user_id_db AS string) AS user_db_id,
+      SAFE_CAST(user_id_db AS int64) AS user_db_id,
       CAST(device_id AS string) AS device_id,
       CAST(api_version AS string) AS api_version,
       CAST(store_id AS string) AS store_id,
@@ -25,14 +25,15 @@ WITH
     FROM `solid-transport-479213-h5`.`raw`.`countly_summary`
     WHERE collection = 'checkout_success'
   ),
-  line_items
-  AS (
+
+  line_items AS (
     SELECT
       b.*,
 
       -- cart_products fields
-      CAST(cp.product_id AS string) AS product_id,
-      CAST(cp.amount AS int64) AS product_quantity,
+      SAFE_CAST(cp.product_id AS int64) AS product_id,
+      SAFE_CAST(cp.amount AS int64) AS product_quantity,
+
       SAFE.PARSE_NUMERIC(
         TRIM(
           REPLACE(
@@ -40,26 +41,32 @@ WITH
               WHEN
                 STRPOS(REPLACE(cp.price, '٫', '.'), ',') > 0
                 AND STRPOS(REPLACE(cp.price, '٫', '.'), '.') > 0
-                THEN
-                  IF(
-                    STRPOS(REPLACE(cp.price, '٫', '.'), ',')
-                      < STRPOS(REPLACE(cp.price, '٫', '.'), '.'),
-                    REPLACE(REPLACE(cp.price, '٫', '.'), ',', ''),
-                    REPLACE(
-                      REPLACE(REPLACE(cp.price, '٫', '.'), '.', ''), ',', '.'))
+              THEN
+                IF(
+                  STRPOS(REPLACE(cp.price, '٫', '.'), ',')
+                    < STRPOS(REPLACE(cp.price, '٫', '.'), '.'),
+                  REPLACE(REPLACE(cp.price, '٫', '.'), ',', ''),
+                  REPLACE(
+                    REPLACE(REPLACE(cp.price, '٫', '.'), '.', ''), ',', '.'
+                  )
+                )
               WHEN STRPOS(REPLACE(cp.price, '٫', '.'), ',') > 0
-                THEN REPLACE(REPLACE(cp.price, '٫', '.'), ',', '.')
+              THEN REPLACE(REPLACE(cp.price, '٫', '.'), ',', '.')
               ELSE REPLACE(cp.price, '٫', '.')
-              END,
+            END,
             CHR(39),
-            ''))) AS product_price,
-  CAST(cp.currency AS string) AS product_currency,
-  cp.option AS option_array,
-  cp_offset
-FROM base b
-LEFT JOIN
-  UNNEST(b.cart_products) AS cp
-  WITH offset AS cp_offset),
+            ''
+          )
+        )
+      ) AS product_price,
+
+      CAST(cp.currency AS string) AS product_currency,
+      cp.option AS option_array,
+      cp_offset
+    FROM base b
+    LEFT JOIN UNNEST(b.cart_products) AS cp WITH OFFSET AS cp_offset
+  ),
+
   options AS (
     SELECT
       li.*,
@@ -67,24 +74,28 @@ LEFT JOIN
       CAST(opt.option_label AS string) AS option_label,
       opt_offset
     FROM line_items li
-    LEFT JOIN UNNEST(li.option_array) AS opt WITH offset AS opt_offset
+    LEFT JOIN UNNEST(li.option_array) AS opt WITH OFFSET AS opt_offset
   )
+
 SELECT
-  to_hex(
-    md5(
-      concat(
-        coalesce(order_id, ''),
+  TO_HEX(
+    MD5(
+      CONCAT(
+        COALESCE(order_id, ''),
         '|',
-        coalesce(product_id, ''),
+        COALESCE(CAST(product_id AS string), ''),
         '|',
-        coalesce(option_id, ''),
+        COALESCE(option_id, ''),
         '|',
-        CAST(coalesce(cp_offset, -1) AS string),
+        CAST(COALESCE(cp_offset, -1) AS string),
         '|',
-        CAST(coalesce(opt_offset, -1) AS string),
+        CAST(COALESCE(opt_offset, -1) AS string),
         '|',
-        CAST(coalesce(time_stamp, -1) AS string))))
-    AS item_key,
+        CAST(COALESCE(time_stamp, -1) AS string)
+      )
+    )
+  ) AS item_key,
+
   order_id,
   time_stamp,
   event_ts,
@@ -101,14 +112,13 @@ SELECT
   current_url,
   referrer_url,
   email_address,
+
   product_id,
   product_quantity,
   product_price,
   product_currency,
   option_id,
   option_label,
-  CAST(product_quantity AS numeric) * CAST(product_price AS numeric)
-    AS line_total_amount
+
+  CAST(product_quantity AS numeric) * CAST(product_price AS numeric) AS line_total_amount
 FROM options
-
-

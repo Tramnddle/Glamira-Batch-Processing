@@ -35,7 +35,7 @@ WITH
     FROM src
   )
 SELECT
-  -- deterministic BIGINT surrogate key
+  -- deterministic BIGINT surrogate key (only for non-null product_id)
   CAST(abs(farm_fingerprint(lower(trim(product_id_str)))) AS int64)
     AS product_key,
 
@@ -53,5 +53,7 @@ SELECT
   material_design,
   sku
 FROM typed
-WHERE product_id_str IS NOT NULL AND trim(product_id_str) != ''
+WHERE product_id_str IS NOT NULL 
+  AND trim(product_id_str) != ''
+  AND trim(product_id_str) != 'null'
 

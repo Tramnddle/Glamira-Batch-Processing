@@ -27,41 +27,30 @@ checked_users as (
 
 email_base as (
   select
-    checked_users.email_address,
+    cu.email_address,
     case
-      when count(distinct checked_users.user_id_db) = 1 then 'Unique'
-      when count(distinct checked_users.user_id_db) > 1 then 'Multiple'
+      when count(distinct cast(cu.user_id_db as string)) = 1 then 'Unique'
+      when count(distinct cast(cu.user_id_db as string)) > 1 then 'Multiple'
       else 'Unknown'
-    end as email_category
-  from checked_users
-  where checked_users.user_status = 'VALID'
-  group by checked_users.email_address
+    end as has_email_multiple_user_ids
+  from checked_users cu
+  where cu.user_status = 'VALID'
+  group by cu.email_address
 ),
 
--- pick a representative user_db_id per email (needed because some emails can be "Multiple")
-email_user as (
-  select
-    eb.email_address,
-    eb.email_category,
-    -- choose one deterministic user_id_db for the dimension row
-    min(cast(cu.user_id_db as string)) as user_db_id
-  from email_base eb
-  join checked_users cu
-    on cu.email_address = eb.email_address
-   and cu.user_status = 'VALID'
-  group by eb.email_address, eb.email_category
+email_user_pairs as (
+  select distinct
+    cu.email_address,
+    cast(cu.user_id_db as string) as user_db_id
+  from checked_users cu
+  where cu.user_status = 'VALID'
 )
 
 select
-  -- deterministic “random-looking” bigint key based on email
-  cast(
-    abs(farm_fingerprint(lower(trim(email_address))))
-    as int64
-  ) as customer_key,
-
-  cast(email_address as string) as email_address,
-  cast(user_db_id as int64) as user_db_id,
-  email_category
-
-from email_user
-order by email_address
+  eup.email_address,
+  safe_cast(eup.user_db_id as int64) as user_db_id,
+  eb.has_email_multiple_user_ids
+from email_user_pairs eup
+join email_base eb
+  on eb.email_address = eup.email_address
+order by eup.email_address, user_db_id

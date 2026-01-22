@@ -36,7 +36,12 @@ models:
     staging:
       +schema: staging
       +materialized: view
-
+    audit:
+      +dataset: raw_staging_audit
+      +materialized: table
+    intermediate:
+      +schema: intermediate
+      +materialized: view
     # MART / STAR SCHEMA LAYER
     marts:
       +schema: marts

@@ -947,3 +947,172 @@ There are 2 unused configuration paths:
 [0m14:28:23.100356 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002ECAE1776A0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002ECAF510CD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002ECB0435F00>]}
 [0m14:28:23.100356 [debug] [MainThread]: Flushing usage events
 [0m14:28:23.691314 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m09:24:29.097517 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F93853B640>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F93A888340>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F93A888160>]}
+
+
+============================== 09:24:29.101518 | 238f556f-5b26-40ee-8a29-cc1af9634a48 ==============================
+[0m09:24:29.101518 [info ] [MainThread]: Running with dbt=1.11.2
+[0m09:24:29.102517 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'profiles_dir': 'C:\\Users\\tramn\\.dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'invocation_command': 'dbt test', 'indirect_selection': 'eager', 'use_colors': 'True', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\tramn\\OneDrive\\Documents\\Unigap K20\\L3_batch_data\\Modelling\\logs'}
+[0m09:24:36.022003 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '238f556f-5b26-40ee-8a29-cc1af9634a48', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F9555B0310>]}
+[0m09:24:36.084003 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '238f556f-5b26-40ee-8a29-cc1af9634a48', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F9398968F0>]}
+[0m09:24:36.085007 [info ] [MainThread]: Registered adapter: bigquery=1.11.0
+[0m09:24:36.856309 [debug] [MainThread]: checksum: 3d40d8bbe1bef07db1c24822f2dbfff8bc07f2a48ed4fe2658a40653aec0b54b, vars: {}, profile: , target: , version: 1.11.2
+[0m09:24:36.914280 [info ] [MainThread]: Unable to do partial parsing because a project dependency has been added
+[0m09:24:36.914280 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '238f556f-5b26-40ee-8a29-cc1af9634a48', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F939FC7310>]}
+[0m09:24:38.977056 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 3 unused configuration paths:
+- models.dbt_bigquery_glamira.marts
+- models.dbt_bigquery_glamira.staging
+- models.dbt_bigquery_glamira.audit
+[0m09:24:38.983053 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '238f556f-5b26-40ee-8a29-cc1af9634a48', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F9555FBBE0>]}
+[0m09:24:39.031023 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\tramn\OneDrive\Documents\Unigap K20\L3_batch_data\Modelling\target\manifest.json
+[0m09:24:39.043022 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\tramn\OneDrive\Documents\Unigap K20\L3_batch_data\Modelling\target\semantic_manifest.json
+[0m09:24:39.089047 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '238f556f-5b26-40ee-8a29-cc1af9634a48', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F955D2DB10>]}
+[0m09:24:39.090022 [info ] [MainThread]: Found 537 macros
+[0m09:24:39.090022 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '238f556f-5b26-40ee-8a29-cc1af9634a48', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F955B7AE90>]}
+[0m09:24:39.092046 [warn ] [MainThread]: Nothing to do. Try checking your model configs and model specification args
+[0m09:24:39.093022 [debug] [MainThread]: Command end result
+[0m09:24:39.114021 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\tramn\OneDrive\Documents\Unigap K20\L3_batch_data\Modelling\target\manifest.json
+[0m09:24:39.117023 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\tramn\OneDrive\Documents\Unigap K20\L3_batch_data\Modelling\target\semantic_manifest.json
+[0m09:24:39.121020 [debug] [MainThread]: Wrote artifact RunExecutionResult to C:\Users\tramn\OneDrive\Documents\Unigap K20\L3_batch_data\Modelling\target\run_results.json
+[0m09:24:39.122022 [debug] [MainThread]: Command `dbt test` succeeded at 09:24:39.122022 after 10.13 seconds
+[0m09:24:39.123023 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F93853B640>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F9398968F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F955D44400>]}
+[0m09:24:39.123023 [debug] [MainThread]: Flushing usage events
+[0m09:24:39.679020 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m09:29:14.990590 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001469742B610>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001469977C3A0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001469977C1C0>]}
+
+
+============================== 09:29:14.994619 | 79336a76-05d9-4bda-933a-c6b36b2d744f ==============================
+[0m09:29:14.994619 [info ] [MainThread]: Running with dbt=1.11.2
+[0m09:29:14.995589 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\tramn\\.dbt', 'invocation_command': 'dbt test', 'use_colors': 'True', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\tramn\\OneDrive\\Documents\\Unigap K20\\L3_batch_data\\Modelling\\logs'}
+[0m09:29:18.075824 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '79336a76-05d9-4bda-933a-c6b36b2d744f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000014698E90310>]}
+[0m09:29:18.136820 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '79336a76-05d9-4bda-933a-c6b36b2d744f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000146995A8D90>]}
+[0m09:29:18.137823 [info ] [MainThread]: Registered adapter: bigquery=1.11.0
+[0m09:29:18.781830 [debug] [MainThread]: checksum: 3d40d8bbe1bef07db1c24822f2dbfff8bc07f2a48ed4fe2658a40653aec0b54b, vars: {}, profile: , target: , version: 1.11.2
+[0m09:29:18.888652 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m09:29:18.889202 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m09:29:18.889706 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m09:29:18.890298 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 3 unused configuration paths:
+- models.dbt_bigquery_glamira.staging
+- models.dbt_bigquery_glamira.audit
+- models.dbt_bigquery_glamira.marts
+[0m09:29:18.895223 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '79336a76-05d9-4bda-933a-c6b36b2d744f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000146B4C0E830>]}
+[0m09:29:18.944256 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\tramn\OneDrive\Documents\Unigap K20\L3_batch_data\Modelling\target\manifest.json
+[0m09:29:18.946224 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\tramn\OneDrive\Documents\Unigap K20\L3_batch_data\Modelling\target\semantic_manifest.json
+[0m09:29:18.975816 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '79336a76-05d9-4bda-933a-c6b36b2d744f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000146B4C0E4A0>]}
+[0m09:29:18.976788 [info ] [MainThread]: Found 537 macros
+[0m09:29:18.977789 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '79336a76-05d9-4bda-933a-c6b36b2d744f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000146B4BFB370>]}
+[0m09:29:18.978789 [warn ] [MainThread]: Nothing to do. Try checking your model configs and model specification args
+[0m09:29:18.980819 [debug] [MainThread]: Command end result
+[0m09:29:19.001787 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\tramn\OneDrive\Documents\Unigap K20\L3_batch_data\Modelling\target\manifest.json
+[0m09:29:19.003789 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\tramn\OneDrive\Documents\Unigap K20\L3_batch_data\Modelling\target\semantic_manifest.json
+[0m09:29:19.007788 [debug] [MainThread]: Wrote artifact RunExecutionResult to C:\Users\tramn\OneDrive\Documents\Unigap K20\L3_batch_data\Modelling\target\run_results.json
+[0m09:29:19.008789 [debug] [MainThread]: Command `dbt test` succeeded at 09:29:19.008789 after 4.09 seconds
+[0m09:29:19.009789 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001469742B610>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000146986EE4D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000146B44DC820>]}
+[0m09:29:19.009789 [debug] [MainThread]: Flushing usage events
+[0m09:29:19.492043 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m09:30:07.848093 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F49097B670>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F492CC83A0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F492CC81C0>]}
+
+
+============================== 09:30:07.852093 | fab5a251-6e60-4acc-a5ad-bbe158194732 ==============================
+[0m09:30:07.852093 [info ] [MainThread]: Running with dbt=1.11.2
+[0m09:30:07.853062 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\tramn\\.dbt', 'invocation_command': 'dbt test --select stg_*', 'use_colors': 'True', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\tramn\\OneDrive\\Documents\\Unigap K20\\L3_batch_data\\Modelling\\logs'}
+[0m09:30:11.079644 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'fab5a251-6e60-4acc-a5ad-bbe158194732', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F4ADB21CF0>]}
+[0m09:30:11.142643 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'fab5a251-6e60-4acc-a5ad-bbe158194732', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F4A7B7AAA0>]}
+[0m09:30:11.142643 [info ] [MainThread]: Registered adapter: bigquery=1.11.0
+[0m09:30:11.816674 [debug] [MainThread]: checksum: 3d40d8bbe1bef07db1c24822f2dbfff8bc07f2a48ed4fe2658a40653aec0b54b, vars: {}, profile: , target: , version: 1.11.2
+[0m09:30:11.915673 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m09:30:11.915673 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m09:30:11.915673 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m09:30:11.917645 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 3 unused configuration paths:
+- models.dbt_bigquery_glamira.audit
+- models.dbt_bigquery_glamira.marts
+- models.dbt_bigquery_glamira.staging
+[0m09:30:11.922673 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'fab5a251-6e60-4acc-a5ad-bbe158194732', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F4AE1620B0>]}
+[0m09:30:11.972674 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\tramn\OneDrive\Documents\Unigap K20\L3_batch_data\Modelling\target\manifest.json
+[0m09:30:11.974675 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\tramn\OneDrive\Documents\Unigap K20\L3_batch_data\Modelling\target\semantic_manifest.json
+[0m09:30:12.005644 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'fab5a251-6e60-4acc-a5ad-bbe158194732', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F4AE163610>]}
+[0m09:30:12.005644 [info ] [MainThread]: Found 537 macros
+[0m09:30:12.006678 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'fab5a251-6e60-4acc-a5ad-bbe158194732', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F4ADF750C0>]}
+[0m09:30:12.007673 [warn ] [MainThread]: The selection criterion 'stg_*' does not match any enabled nodes
+[0m09:30:12.008646 [warn ] [MainThread]: Nothing to do. Try checking your model configs and model specification args
+[0m09:30:12.011674 [debug] [MainThread]: Command end result
+[0m09:30:12.033166 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\tramn\OneDrive\Documents\Unigap K20\L3_batch_data\Modelling\target\manifest.json
+[0m09:30:12.035242 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\tramn\OneDrive\Documents\Unigap K20\L3_batch_data\Modelling\target\semantic_manifest.json
+[0m09:30:12.038850 [debug] [MainThread]: Wrote artifact RunExecutionResult to C:\Users\tramn\OneDrive\Documents\Unigap K20\L3_batch_data\Modelling\target\run_results.json
+[0m09:30:12.040446 [debug] [MainThread]: Command `dbt test` succeeded at 09:30:12.039933 after 4.27 seconds
+[0m09:30:12.040483 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F49097B670>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F4A7B7AAA0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F4ADA2DA20>]}
+[0m09:30:12.041189 [debug] [MainThread]: Flushing usage events
+[0m09:30:12.568979 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m14:31:11.911075 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CE1A0EB670>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CE1C43C370>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CE1C43C190>]}
+
+
+============================== 14:31:11.916073 | 87eb4b0a-43ab-4bfb-97e1-d9fd4948dacf ==============================
+[0m14:31:11.916073 [info ] [MainThread]: Running with dbt=1.11.2
+[0m14:31:11.917075 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'empty': 'False', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\tramn\\.dbt', 'use_colors': 'True', 'invocation_command': 'dbt run --select mart_fact_order mart_dim_date mart_dim_customer', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\tramn\\OneDrive\\Documents\\Unigap K20\\L3_batch_data\\Modelling\\logs'}
+[0m14:31:19.030347 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '87eb4b0a-43ab-4bfb-97e1-d9fd4948dacf', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CE37101600>]}
+[0m14:31:19.093346 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '87eb4b0a-43ab-4bfb-97e1-d9fd4948dacf', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CE1C268DF0>]}
+[0m14:31:19.094347 [info ] [MainThread]: Registered adapter: bigquery=1.11.0
+[0m14:31:19.841815 [debug] [MainThread]: checksum: 3d40d8bbe1bef07db1c24822f2dbfff8bc07f2a48ed4fe2658a40653aec0b54b, vars: {}, profile: , target: , version: 1.11.2
+[0m14:31:21.130624 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m14:31:21.130624 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m14:31:21.131624 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m14:31:21.132624 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 3 unused configuration paths:
+- models.dbt_bigquery_glamira.staging
+- models.dbt_bigquery_glamira.marts
+- models.dbt_bigquery_glamira.audit
+[0m14:31:21.137625 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '87eb4b0a-43ab-4bfb-97e1-d9fd4948dacf', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CE378D24A0>]}
+[0m14:31:21.189624 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\tramn\OneDrive\Documents\Unigap K20\L3_batch_data\Modelling\target\manifest.json
+[0m14:31:21.201624 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\tramn\OneDrive\Documents\Unigap K20\L3_batch_data\Modelling\target\semantic_manifest.json
+[0m14:31:21.239624 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '87eb4b0a-43ab-4bfb-97e1-d9fd4948dacf', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CE3787FAF0>]}
+[0m14:31:21.240651 [info ] [MainThread]: Found 537 macros
+[0m14:31:21.240651 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '87eb4b0a-43ab-4bfb-97e1-d9fd4948dacf', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CE3787E170>]}
+[0m14:31:21.241625 [warn ] [MainThread]: The selection criterion 'mart_fact_order' does not match any enabled nodes
+[0m14:31:21.242627 [warn ] [MainThread]: The selection criterion 'mart_dim_date' does not match any enabled nodes
+[0m14:31:21.243626 [warn ] [MainThread]: The selection criterion 'mart_dim_customer' does not match any enabled nodes
+[0m14:31:21.244655 [warn ] [MainThread]: Nothing to do. Try checking your model configs and model specification args
+[0m14:31:21.246651 [debug] [MainThread]: Command end result
+[0m14:31:21.268624 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\tramn\OneDrive\Documents\Unigap K20\L3_batch_data\Modelling\target\manifest.json
+[0m14:31:21.271625 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\tramn\OneDrive\Documents\Unigap K20\L3_batch_data\Modelling\target\semantic_manifest.json
+[0m14:31:21.274625 [debug] [MainThread]: Wrote artifact RunExecutionResult to C:\Users\tramn\OneDrive\Documents\Unigap K20\L3_batch_data\Modelling\target\run_results.json
+[0m14:31:21.276626 [debug] [MainThread]: Command `dbt run` succeeded at 14:31:21.275626 after 9.46 seconds
+[0m14:31:21.276626 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CE1A0EB670>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CE1C268DF0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001CE371A0670>]}
+[0m14:31:21.277626 [debug] [MainThread]: Flushing usage events
+[0m14:31:21.916494 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m09:44:50.440821 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000016BB6EBB670>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000016BB920C370>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000016BB920C190>]}
+
+
+============================== 09:44:50.444847 | 78084c27-6502-42b1-ab98-26216ac24e63 ==============================
+[0m09:44:50.444847 [info ] [MainThread]: Running with dbt=1.11.2
+[0m09:44:50.445851 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'False', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\tramn\\.dbt', 'indirect_selection': 'eager', 'use_colors': 'True', 'invocation_command': 'dbt run --select stg_customer', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\tramn\\OneDrive\\Documents\\Unigap K20\\L3_batch_data\\Modelling\\logs'}
+[0m09:44:57.253925 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '78084c27-6502-42b1-ab98-26216ac24e63', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000016BB914BC40>]}
+[0m09:44:57.316925 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '78084c27-6502-42b1-ab98-26216ac24e63', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000016BCE0B8970>]}
+[0m09:44:57.317925 [info ] [MainThread]: Registered adapter: bigquery=1.11.0
+[0m09:44:58.077720 [debug] [MainThread]: checksum: 3d40d8bbe1bef07db1c24822f2dbfff8bc07f2a48ed4fe2658a40653aec0b54b, vars: {}, profile: , target: , version: 1.11.2
+[0m09:44:59.248237 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m09:44:59.249267 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m09:44:59.250235 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m09:44:59.251236 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 3 unused configuration paths:
+- models.dbt_bigquery_glamira.staging
+- models.dbt_bigquery_glamira.audit
+- models.dbt_bigquery_glamira.marts
+[0m09:44:59.256265 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '78084c27-6502-42b1-ab98-26216ac24e63', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000016BD46962F0>]}
+[0m09:44:59.308236 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\tramn\OneDrive\Documents\Unigap K20\L3_batch_data\Modelling\target\manifest.json
+[0m09:44:59.320235 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\tramn\OneDrive\Documents\Unigap K20\L3_batch_data\Modelling\target\semantic_manifest.json
+[0m09:44:59.355236 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '78084c27-6502-42b1-ab98-26216ac24e63', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000016BD461F490>]}
+[0m09:44:59.356238 [info ] [MainThread]: Found 537 macros
+[0m09:44:59.357238 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '78084c27-6502-42b1-ab98-26216ac24e63', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000016BD461D2A0>]}
+[0m09:44:59.357238 [warn ] [MainThread]: The selection criterion 'stg_customer' does not match any enabled nodes
+[0m09:44:59.359236 [warn ] [MainThread]: Nothing to do. Try checking your model configs and model specification args
+[0m09:44:59.361236 [debug] [MainThread]: Command end result
+[0m09:44:59.384264 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\tramn\OneDrive\Documents\Unigap K20\L3_batch_data\Modelling\target\manifest.json
+[0m09:44:59.386263 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\tramn\OneDrive\Documents\Unigap K20\L3_batch_data\Modelling\target\semantic_manifest.json
+[0m09:44:59.390235 [debug] [MainThread]: Wrote artifact RunExecutionResult to C:\Users\tramn\OneDrive\Documents\Unigap K20\L3_batch_data\Modelling\target\run_results.json
+[0m09:44:59.391236 [debug] [MainThread]: Command `dbt run` succeeded at 09:44:59.391236 after 9.04 seconds
+[0m09:44:59.392237 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000016BB6EBB670>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000016BD3F6D630>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000016BD3F776A0>]}
+[0m09:44:59.392237 [debug] [MainThread]: Flushing usage events
+[0m09:44:59.915905 [debug] [MainThread]: An error was encountered while trying to flush usage events

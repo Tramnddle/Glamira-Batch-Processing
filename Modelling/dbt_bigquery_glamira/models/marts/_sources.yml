@@ -1,0 +1,11 @@
+version: 2
+
+sources:  
+  - name: staging
+    database: solid-transport-479213-h5
+    schema: raw_staging
+    tables:
+      - name: stg_customer
+      - name: stg_location
+      - name: stg_order
+      - name: stg_product

@@ -1,0 +1,65 @@
+version: 2
+
+models:
+  - name: stg_order
+    description: "Fact-like staging for checkout_success events (line-item grain)"
+    tests:
+      # Prefer a single surrogate row key uniqueness (matches your stg_order.sql)
+      - unique:
+          column_name: item_key
+
+    columns:
+      - name: item_key
+        tests: [not_null]
+
+      - name: order_id
+        tests: [not_null]
+
+      - name: event_ts
+        tests: [not_null]
+
+      - name: store_id
+        tests: [not_null]
+
+      # user_db_id is often missing in tracking / guest flows -> track in audit metrics instead
+      - name: user_db_id
+        tests: []
+
+      - name: product_id
+        tests: [not_null]
+
+      - name: product_quantity
+        tests: [not_null]
+
+      - name: product_price
+        tests: [not_null]
+
+      - name: product_currency
+        tests: [not_null]
+
+      - name: ip
+        tests: []
+
+
+  - name: stg_customer
+    columns:
+      - name: user_db_id
+        tests: [not_null, unique]
+      - name: email_address
+        tests: [unique]
+
+
+  - name: stg_product
+    columns:
+      - name: product_id
+        tests: [not_null, unique]
+      - name: sku
+        tests: [not_null]
+
+
+  - name: stg_location
+    columns:
+      - name: ip
+        tests: [not_null, unique]
+      - name: country_code
+        tests: []
