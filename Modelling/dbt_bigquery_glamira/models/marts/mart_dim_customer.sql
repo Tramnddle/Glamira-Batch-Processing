@@ -40,7 +40,7 @@ latest_email_from_fact as (
       partition by user_db_id
       order by cast(time_stamp as int64) desc, lower(trim(email_address)) desc
     ) as rn
-  from {{ ref('mart_fact_order') }}
+  from {{ ref('stg_order') }}
   where user_db_id is not null
     and email_address is not null
     and trim(email_address) != ''

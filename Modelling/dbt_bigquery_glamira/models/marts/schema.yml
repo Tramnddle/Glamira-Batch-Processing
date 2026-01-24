@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: mart_fact_order
+    columns:
+      - name: item_key
+        tests: [not_null, unique]
+      - name: order_id
+        tests: [not_null]
+      - name: product_id
+        tests: [not_null]
+      - name: user_db_id
+        tests: [not_null]
+
+  - name: mart_dim_customer
+    columns:
+      - name: customer_key
+        tests: [not_null, unique]
+      - name: email_address
+        tests: [not_null]
+      # flagging happens in the model, but you can still test validity:
+      # optionally add an "accepted_values" test for boolean flags if desired
+
+  - name: mart_dim_product
+    columns:
+      - name: product_key
+        tests: [not_null, unique]
+      - name: sku
+        tests: [not_null]
+        # If sku should be unique, uncomment:
+        # tests: [not_null, unique]
