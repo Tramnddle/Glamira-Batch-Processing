@@ -54,7 +54,7 @@ WITH
               THEN REPLACE(REPLACE(cp.price, '٫', '.'), ',', '.')
               ELSE REPLACE(cp.price, '٫', '.')
             END,
-            CHR(39),
+            ' ',
             ''
           )
         )
@@ -75,6 +75,13 @@ WITH
       opt_offset
     FROM line_items li
     LEFT JOIN UNNEST(li.option_array) AS opt WITH OFFSET AS opt_offset
+  ),
+
+  locations AS (
+    SELECT
+      CAST(ip AS string) AS ip,
+      location_key
+    FROM {{ ref('stg_location') }}
   )
 
 SELECT
@@ -96,12 +103,15 @@ SELECT
     )
   ) AS item_key,
 
+  -- ✅ bring in location_key from stg_location
+  l.location_key,
+
   order_id,
   time_stamp,
   event_ts,
   local_time,
   collection,
-  ip,
+  o.ip,
   user_agent,
   resolution,
   user_db_id,
@@ -121,4 +131,6 @@ SELECT
   option_label,
 
   CAST(product_quantity AS numeric) * CAST(product_price AS numeric) AS line_total_amount
-FROM options
+FROM options o
+LEFT JOIN locations l
+  ON o.ip = l.ip

@@ -128,7 +128,7 @@ final as (
     c.current_url,
     c.referrer_url,
     c.show_recommendation,
-
+    c.location_key,
     -- measures (original)
     c.product_quantity,
     c.product_price,
@@ -152,30 +152,20 @@ final as (
     on fx.currency_code = c.currency_code
 ),
 
-final_loc as (
-  select 
-    f.* except(ip),
-    loc.location_key,
-    loc.ip
-  from final f
-  join {{ ref('mart_dim_location') }} as loc
-    on f.ip = loc.ip
-),
-
-final_loc_cust as (
+final_cust as (
   select 
     fl.* except(email_address),
     cust.customer_key,
     cust.email_address
-  from final_loc fl
-  join {{ ref('mart_dim_customer') }} as cust
+  from final fl
+left join {{ ref('mart_dim_customer') }} as cust
     on fl.email_address = cust.email_address
 )
 
 select 
-  flc.* except(product_id),
+  fc.* except(product_id),
   prod.product_key,
   prod.product_id
-from final_loc_cust flc
-join {{ ref('mart_dim_product') }} as prod
-  on flc.product_id = prod.product_id
+from final_cust fc
+left join {{ ref('mart_dim_product') }} as prod
+  on fc.product_id = prod.product_id
