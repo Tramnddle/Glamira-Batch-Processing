@@ -10,5 +10,6 @@ select
   store_code,
   attribute_set,
   category,
-  material_design
+  material_design,
+  product_name
 from {{ ref('stg_product') }}
