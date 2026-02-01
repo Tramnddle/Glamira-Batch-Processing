@@ -17,7 +17,6 @@ with ranked as (
 
 select
   location_key,
-  ip,
   country_code,
   country_name,
   region,

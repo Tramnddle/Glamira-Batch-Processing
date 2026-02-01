@@ -1,17 +1,15 @@
 {{ config(materialized='view') }}
 
 select
-  to_hex(
-    md5(
-      concat(
-        coalesce(lower(trim(cast(country_code as string))), ''),
+  CAST(ABS(FARM_FINGERPRINT(
+      CONCAT(
+        COALESCE(LOWER(TRIM(CAST(country_code AS STRING))), ''),
         '|',
-        coalesce(lower(trim(cast(region as string))), ''),
+        COALESCE(LOWER(TRIM(CAST(region AS STRING))), ''),
         '|',
-        coalesce(lower(trim(cast(city as string))), '')
+        COALESCE(LOWER(TRIM(CAST(city AS STRING))), '')
       )
-    )
-  ) as location_key,
+    )) AS STRING) as location_key,
 
   -- remaining columns
   cast(ip as string) as ip,

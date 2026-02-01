@@ -14,6 +14,10 @@ currency_clean as (
     trim(s.product_currency) as product_currency_raw,
     lower(trim(s.product_currency)) as product_currency_norm,
 
+    -- extract host/tld from current_url for context when currency is ambiguous
+    lower(trim(coalesce(regexp_extract(s.current_url, r'://([^/]+)'), ''))) as url_host,
+    regexp_extract(lower(trim(coalesce(regexp_extract(s.current_url, r'://([^/]+)'), ''))), r'\.([a-z]{2,})$') as url_tld,
+
     case
       -- Empty / missing
       when s.product_currency is null or trim(s.product_currency) = '' then null
@@ -79,6 +83,55 @@ currency_clean as (
   from src s
 ),
 
+/* 2b) Infer currency from URL host for ambiguous cases */
+/* 2b) Infer currency from URL host for ambiguous cases */
+currency_inferred_base as (
+  select
+    c.*,
+    case
+      when c.currency_code is not null then c.currency_code
+      when c.currency_status = 'AMBIGUOUS' and c.url_host like '%co.uk' then 'GBP'
+      when c.currency_status = 'AMBIGUOUS' and c.url_tld = 'uk' then 'GBP'
+      when c.currency_status = 'AMBIGUOUS' and c.url_tld = 'de' then 'EUR'
+      when c.currency_status = 'AMBIGUOUS' and c.url_tld = 'fr' then 'EUR'
+      when c.currency_status = 'AMBIGUOUS' and c.url_tld = 'es' then 'EUR'
+      when c.currency_status = 'AMBIGUOUS' and c.url_tld = 'it' then 'EUR'
+      when c.currency_status = 'AMBIGUOUS' and c.url_tld = 'au' then 'AUD'
+      when c.currency_status = 'AMBIGUOUS' and c.url_tld = 'ca' then 'CAD'
+      when c.currency_status = 'AMBIGUOUS' and c.url_tld = 'nz' then 'NZD'
+      when c.currency_status = 'AMBIGUOUS' and c.url_tld = 'sg' then 'SGD'
+      when c.currency_status = 'AMBIGUOUS' and c.url_tld = 'se' then 'SEK'
+      when c.currency_status = 'AMBIGUOUS' and c.url_tld = 'no' then 'NOK'
+      when c.currency_status = 'AMBIGUOUS' and c.url_tld = 'dk' then 'DKK'
+      when c.currency_status = 'AMBIGUOUS' and c.url_tld = 'ch' then 'CHF'
+      when c.currency_status = 'AMBIGUOUS' and c.url_tld = 'jp' then 'JPY'
+      when c.currency_status = 'AMBIGUOUS' and c.url_tld = 'mx' then 'MXN'
+      when c.currency_status = 'AMBIGUOUS' and c.url_tld = 'br' then 'BRL'
+      when c.currency_status = 'AMBIGUOUS' and c.url_tld = 'pl' then 'PLN'
+      when c.currency_status = 'AMBIGUOUS' and c.url_tld = 'nl' then 'EUR'
+      when c.currency_status = 'AMBIGUOUS' and c.url_tld = 'ie' then 'EUR'
+      when c.currency_status = 'AMBIGUOUS' and c.url_tld = 'be' then 'EUR'
+      when c.currency_status = 'AMBIGUOUS' and c.url_tld = 'in' then 'INR'
+      when c.currency_status = 'AMBIGUOUS' and c.url_tld = 'ph' then 'PHP'
+      when c.currency_status = 'AMBIGUOUS' and c.url_tld = 'vn' then 'VND'
+      when c.currency_status = 'AMBIGUOUS' and c.url_tld = 'pt' then 'EUR'
+      else null
+    end as inferred_currency
+  from currency_clean c
+),
+
+currency_inferred as (
+  select
+    b.*,
+    case
+      when b.currency_code is not null then b.currency_status
+      when b.currency_status = 'AMBIGUOUS' and b.inferred_currency is not null then 'INFERRED'
+      else b.currency_status
+    end as currency_status_final
+  from currency_inferred_base b
+),
+
+
 fx_latest as (
   select
     fx_date,
@@ -117,8 +170,8 @@ final as (
     -- attributes
     c.collection,
     c.product_currency_raw as product_currency,
-    c.currency_code,
-    c.currency_status,
+    coalesce(c.currency_code, c.inferred_currency) as currency_code,
+    c.currency_status_final as currency_status,
     c.email_address,
     c.device_id,
     c.user_agent,
@@ -147,19 +200,19 @@ final as (
       else safe_cast(c.line_total_amount as numeric) / fx.usd_to_ccy
     end as line_total_amount_usd
 
-  from currency_clean c
+  from currency_inferred c
   left join fx_latest fx
-    on fx.currency_code = c.currency_code
+    on fx.currency_code = coalesce(c.currency_code, c.inferred_currency)
 ),
 
 final_cust as (
   select 
     fl.* except(email_address),
     cust.customer_key,
-    cust.email_address
+    cust.email_address_final
   from final fl
 left join {{ ref('mart_dim_customer') }} as cust
-    on fl.email_address = cust.email_address
+    on fl.email_address = cust.email_address_final
 )
 
 select 

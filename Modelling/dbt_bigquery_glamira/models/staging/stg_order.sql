@@ -85,8 +85,7 @@ WITH
   )
 
 SELECT
-  TO_HEX(
-    MD5(
+  CAST(ABS(FARM_FINGERPRINT(
       CONCAT(
         COALESCE(order_id, ''),
         '|',
@@ -100,8 +99,7 @@ SELECT
         '|',
         CAST(COALESCE(time_stamp, -1) AS string)
       )
-    )
-  ) AS item_key,
+    )) AS STRING) AS item_key,
 
   -- ✅ bring in location_key from stg_location
   l.location_key,

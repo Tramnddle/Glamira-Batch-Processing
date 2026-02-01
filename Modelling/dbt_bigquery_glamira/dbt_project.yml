@@ -46,3 +46,15 @@ models:
     marts:
       +schema: marts
       +materialized: table
+seeds:
+  dbt_bigquery_glamira:
+    fx_to_usd_22_01_26:
+      +schema: seeds
+      +column_types:
+        fx_date: date
+        base_code: string
+        currency_code: string
+        usd_to_ccy: float64
+
+
+
