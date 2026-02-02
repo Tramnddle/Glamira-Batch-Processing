@@ -6,7 +6,7 @@
        width="900">
 </p>
 
-*End-to-end batch analytics architecture using BigQuery and dbt
+*End-to-end batch analytics architecture using BigQuery and dbt  
 (Raw → Staging → Snapshot → Mart).*
 
 <p align="center">
@@ -15,7 +15,6 @@
        width="900">
 </p>
 
----
 
 ## Transformation Overview
 
