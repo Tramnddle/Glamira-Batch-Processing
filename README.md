@@ -7,9 +7,12 @@ The goal is to transform raw, semi-structured source data into clean, business-r
 
 ---
 
-## Architecture
+## Architecture Overview
 
-![Glamira Batch Analytics Architecture](images/GrandArchitecture.svg)
+<p align="center">
+  <img src="images/GrandArchitecture.svg" alt="Glamira Batch Analytics Architecture" width="900">
+</p>
+
 
 ## Key Characteristics
 
