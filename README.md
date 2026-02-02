@@ -11,7 +11,7 @@ The goal is to transform raw, semi-structured source data into clean, business-r
 
 ![Glamira Batch Analytics Architecture](images/glamira_architecture.png)
 
-Key Characteristics
+## Key Characteristics
 
 -One-to-one mapping with source systems (e-commerce platform, tracking tools, CRM exports)
 -No business logic applied
