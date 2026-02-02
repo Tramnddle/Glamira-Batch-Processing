@@ -10,7 +10,7 @@
 (Raw → Staging → Snapshot → Mart).*
 
 <p align="center">
-  <img src="images/glamira_datamodel.jpg"
+  <img src="https://github.com/Tramnddle/Glamira-Batch-Processing/blob/b5b7d79d2cfa6f22dddc94495189c8e91c3affe6/images/glamira_datamodel.jpg"
        alt="dbt model lineage"
        width="900">
 </p>
