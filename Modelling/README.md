@@ -18,7 +18,9 @@
 
 
 <p align="center">
-## **Transformation Overview**
+  
+## Visual Summary
+
 
   | Layer    | SQL File                 | Responsibility                                      |
   |----------|--------------------------|----------------------------------------------------|
@@ -31,5 +33,6 @@
   | Mart     | `mart_dim_product.sql`   | Business-ready product attributes                   |
   | Mart     | `mart_dim_location.sql`  | Standardized location dimension                     |
   | Mart     | `mart_fact_order.sql`    | Transactional fact table with normalized metrics    |
+  
 
 </p>
