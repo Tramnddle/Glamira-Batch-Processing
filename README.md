@@ -1,3 +1,22 @@
+# Glamira Batch Processing – dbt Analytics Project
+
+## Overview
+This project implements a scalable batch analytics pipeline for an international e-commerce platform (Glamira), processing 40M+ customer and transaction records using **BigQuery** and **dbt**.
+
+The goal is to transform raw, semi-structured source data into clean, business-ready fact and dimension tables for analytics and BI consumption.
+
+---
+
+## Architecture
+
+![Glamira Batch Analytics Architecture](images/glamira_architecture.png)
+
+Key Characteristics
+
+-One-to-one mapping with source systems (e-commerce platform, tracking tools, CRM exports)
+-No business logic applied
+-High data volume (40M+ records)
+-Semi-structured and nested fields preserved (JSON, STRUCT, ARRAY)
 
 ### Raw Layer
 - Source-aligned ingestion
