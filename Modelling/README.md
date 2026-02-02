@@ -1,7 +1,7 @@
 ## Visual Summary
 
 <p align="center">
-  <img src="images/drawSQL-image-export-2026-01-22.png"
+  <img src="https://github.com/Tramnddle/Glamira-Batch-Processing/blob/c5895aa9e28508685a95fd0da1af659a9cfed9c2/images/drawSQL-image-export-2026-01-22.png"
        alt="Dimensional Data Model"
        width="900">
 </p>
