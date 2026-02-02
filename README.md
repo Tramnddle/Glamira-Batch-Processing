@@ -7,16 +7,19 @@ The goal is to transform raw, semi-structured source data into clean, business-r
 
 ---
 
-## Architecture
+## Architecture Overview
 
-![Glamira Batch Analytics Architecture](images/glamira_architecture.png)
+<p align="center">
+  <img src="images/GrandArchitecture.svg" alt="Glamira Batch Analytics Architecture" width="900">
+</p>
+
 
 ## Key Characteristics
 
--One-to-one mapping with source systems (e-commerce platform, tracking tools, CRM exports)
--No business logic applied
--High data volume (40M+ records)
--Semi-structured and nested fields preserved (JSON, STRUCT, ARRAY)
+- One-to-one mapping with source systems (e-commerce platform, tracking tools, CRM exports)
+- No business logic applied
+- High data volume (40M+ records)
+- Semi-structured and nested fields preserved (JSON, STRUCT, ARRAY)
 
 ### Raw Layer
 - Source-aligned ingestion
